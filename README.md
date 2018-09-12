@@ -1,10 +1,10 @@
 # Project for WebAula
 This project was developed with the following technologies:
 
-# ASPNETCore
+ASPNETCore
 
 After clone project you can run this command:
 
-# dotnet run
+ dotnet run
 
 Thanks.
