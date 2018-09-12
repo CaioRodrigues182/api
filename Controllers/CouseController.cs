@@ -71,14 +71,15 @@ namespace WebAulaAPI.Controllers
             var enterprise = fileObj.contents.Where(x => x.Id == id_company).FirstOrDefault();
             Course obj = null;
             obj = enterprise.Courses.Where(x => x.Id == id_course).LastOrDefault();
-            if (id_company != enterprise.Id) {
-                var tmp = fileObj.contents.Where(x => x.Id == enterprise.Id).FirstOrDefault();
+            enterprise.Courses.Remove(obj);
+
+            if (enterprise.Id != course.EnterpriseId) {
+                var newEnterprise = fileObj.contents.Where(x => x.Id == course.EnterpriseId).FirstOrDefault();
+                newEnterprise.Courses.Add(new Course() { Id = course.Id, Status = course.Status, Name = course.Name, Quantity = course.Quantity, Description = course.Description });
             }
-            obj.Id = id_course;
-            obj.Name = course.Name;
-            obj.Quantity = course.Quantity;
-            obj.Status = course.Status;
-            obj.Description = course.Description;
+            else {
+                enterprise.Courses.Add(new Course() { Id = course.Id, Status = course.Status, Name = course.Name, Quantity = course.Quantity, Description = course.Description });
+            }
 
             var fileSerialized = Newtonsoft.Json.JsonConvert.SerializeObject(fileObj);
             System.IO.File.WriteAllText("./data.json", fileSerialized);

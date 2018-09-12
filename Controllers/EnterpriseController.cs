@@ -39,19 +39,19 @@ namespace WebAulaAPI.Controllers
             return "value";
         }
 
-        // POST api/course
+        // POST api/enterprise
         [HttpPost]
         public void Post([FromBody] CourseDTO course)
         {
         }
 
-        // PUT api/course/5
+        // PUT api/enterprise/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/course/5
+        // DELETE api/enterprise/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
