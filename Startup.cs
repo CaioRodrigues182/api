@@ -40,8 +40,11 @@ namespace WebAulaAPI
             {
                 app.UseHsts();
             }
-            app.UseCors(builder =>
-                builder.WithOrigins("*"));
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
 
             app.UseHttpsRedirection();
             app.UseMvc();
